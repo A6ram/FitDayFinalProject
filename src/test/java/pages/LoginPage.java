@@ -28,7 +28,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    @Step("Log in by '{user}' using password '{password}'")
+    @Step("Login by '{user}' using password '{password}'")
     public void login(String user, String password) {
         $(USERNAME_INPUT).sendKeys(user);
         $(PASSWORD_INPUT).sendKeys(password);

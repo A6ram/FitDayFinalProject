@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 @Log4j2
 public class LoginTest extends BaseTest {
 
-    @Test(description = "Log in")
+    @Test(description = "Login")
     public void positiveLogin() {
         loginSteps.login(user, password);
     }
