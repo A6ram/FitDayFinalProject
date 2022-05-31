@@ -29,7 +29,7 @@ public abstract class BaseTest {
         user = System.getProperty("user", PropertyReader.getProperty("user"));
         password = System.getProperty("password", PropertyReader.getProperty("password"));
 
-        Configuration.browser = "Chrome";
+        Configuration.browser = "chrome";
         Configuration.timeout = 20000;
         Configuration.clickViaJs = true;
         Configuration.headless = false; // Для Jenkins нужно
