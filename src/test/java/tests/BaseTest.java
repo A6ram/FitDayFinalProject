@@ -8,6 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Optional;
+import pages.ActivityPage;
 import pages.DashBoardPage;
 import pages.FoodPage;
 import pages.LoginPage;
@@ -25,7 +26,7 @@ public abstract class BaseTest {
     public LoginPage loginPage;
     public DashBoardPage dashBoardPage;
     public FoodPage foodPage;
-
+    public ActivityPage activityPage;
 
     @BeforeMethod(description = "Opening browser")
     public void setUp(@Optional("chrome") String browser) {
@@ -47,6 +48,7 @@ public abstract class BaseTest {
         loginPage = new LoginPage();
         dashBoardPage = new DashBoardPage();
         foodPage = new FoodPage();
+        activityPage= new ActivityPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")

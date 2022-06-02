@@ -12,7 +12,7 @@ public class LoginTest extends BaseTest {
         loginPage.login(user, password);
     }
 
-    @Test
+    @Test(description = "Login without password")
     public void loginWithoutPassword() {
         loginPage.openPage();
         loginPage.loginWithoutPassword(user);

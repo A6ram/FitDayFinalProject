@@ -7,14 +7,14 @@
     <test name="chrome">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="tests.DashBoardTest"/>
-            <class name="tests.LoginTest"/>
+            <class name="tests.FoodLogTest"/>
+            <class name="tests.ActivityLogTest"/>
         </classes>
     </test>
     <test name="firefox">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="tests.DashBoardTest"/>
+            <class name="tests.FoodLogTest"/>
             <class name="tests.LoginTest"/>
         </classes>
     </test>

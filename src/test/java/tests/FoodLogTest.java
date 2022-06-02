@@ -6,14 +6,14 @@ import org.testng.annotations.Test;
 
 
 @Log4j2
-public class DashBoardTest extends BaseTest {
+public class FoodLogTest extends BaseTest {
 
     @Test(description = "Try to add some foodname to food table")
     public void foodButtonTest() {
         loginPage.openPage();
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
-        dashBoardPage.checkResultInFoodLog();
+        foodPage.checkResultInFoodLog();
     }
 
     @Test(description = "Try to search some kind of foodname")
@@ -22,7 +22,7 @@ public class DashBoardTest extends BaseTest {
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
         foodPage.addFoodBySearch("cheese");
-        dashBoardPage.checkSearchResult();
+        foodPage.checkSearchResult();
     }
 
     @Test(description = "Try to create some custom food")
@@ -30,12 +30,12 @@ public class DashBoardTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
-        dashBoardPage.createCustomFoodItem();
-        dashBoardPage.enterCustomFoodName("dranik");
-        dashBoardPage.addSaveButton();
-        dashBoardPage.addEditButton();
-        dashBoardPage.addDeleteCustomFoodButton();
-        dashBoardPage.setSearchResultOfCustomFood();
+        foodPage.createCustomFoodItem();
+        foodPage.enterCustomFoodName("drak");
+        foodPage.addSaveButton();
+        foodPage.addEditButton();
+        foodPage.addDeleteCustomFoodButton();
+        foodPage.checkSearchResultOfCustomFood();
     }
 
     @Test(description = "Try to change value of amount")
@@ -44,11 +44,11 @@ public class DashBoardTest extends BaseTest {
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
         foodPage.addFoodBySearch("cheese");
-        dashBoardPage.checkSearchResult();
+        foodPage.checkSearchResult();
         foodPage.clearTheAmountOfFood();
         foodPage.addAmountOfFood("3");
         foodPage.addValueToFoodLog();
-        dashBoardPage.checkResultOfFood();
+        foodPage.checkResultOfFood();
     }
 
     @Test(description = "Try to change value of unit")
@@ -57,10 +57,10 @@ public class DashBoardTest extends BaseTest {
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
         foodPage.addFoodBySearch("cheese");
-        dashBoardPage.checkSearchResult();
+        foodPage.checkSearchResult();
         foodPage.chooseTheVariantFromDropdownKindOfFood();
         foodPage.addValueToFoodLog();
-        dashBoardPage.checkResultOfFood();
+        foodPage.checkResultOfFood();
     }
 
     @Test(description = "Try to adding and removing from the Food log")
@@ -69,10 +69,10 @@ public class DashBoardTest extends BaseTest {
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
         foodPage.addFoodBySearch("cheese");
-        dashBoardPage.checkSearchResult();
+        foodPage.checkSearchResult();
         foodPage.addActionsButton();
         foodPage.addDeleteButton();
-        dashBoardPage.checkResultOfFood();
+        foodPage.checkResultOfFood();
 
     }
 
