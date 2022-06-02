@@ -12,4 +12,11 @@ public class LoginTest extends BaseTest {
         loginPage.login(user, password);
     }
 
+    @Test
+    public void loginWithoutPassword() {
+        loginPage.openPage();
+        loginPage.loginWithoutPassword(user);
+        loginPage.getErrorMessage();
+    }
+
 }
