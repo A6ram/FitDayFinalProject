@@ -4,7 +4,8 @@ import com.codeborne.selenide.Configuration;
 import lombok.extern.log4j.Log4j2;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-import steps.LoginSteps;
+import pages.DashBoardPage;
+import pages.LoginPage;
 import utils.PropertyReader;
 import utils.TestListener;
 
@@ -16,7 +17,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public abstract class BaseTest {
     public String user;
     public String password;
-    protected LoginSteps loginSteps;
+    public LoginPage loginPage;
+    public DashBoardPage dashBoardPage;
 
     @Parameters({"browser"})
     @BeforeMethod(description = "Opening browser")
@@ -27,13 +29,13 @@ public abstract class BaseTest {
         user = System.getProperty("user", PropertyReader.getProperty("user"));
         password = System.getProperty("password", PropertyReader.getProperty("password"));
 
-        Configuration.baseUrl = "https://www.fitday.com/";
-        Configuration.browser = "Chrome";
-        Configuration.timeout = 10000;
+        Configuration.browser = "chrome";
+        Configuration.timeout = 20000;
         Configuration.clickViaJs = true;
         Configuration.headless = false; // Для Jenkins нужно
 
-        loginSteps = new LoginSteps();
+        loginPage = new LoginPage();
+        dashBoardPage = new DashBoardPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")

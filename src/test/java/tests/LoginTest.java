@@ -8,7 +8,8 @@ public class LoginTest extends BaseTest {
 
     @Test(description = "Login")
     public void positiveLogin() {
-        loginSteps.login(user, password);
+        loginPage.openPage();
+        loginPage.login(user, password);
     }
 
 }
