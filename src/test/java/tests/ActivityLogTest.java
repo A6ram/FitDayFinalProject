@@ -16,7 +16,6 @@ public class ActivityLogTest extends BaseTest {
         activityPage.validateResultWalking("backpacking");
         activityPage.deleteFromActivityLog();
 
-
     }
 
     @Test
@@ -29,8 +28,6 @@ public class ActivityLogTest extends BaseTest {
         activityPage.validateResultBicycling("BMX or mountain biking");
         activityPage.deleteFromActivityLog();
 
-
     }
-
 
 }

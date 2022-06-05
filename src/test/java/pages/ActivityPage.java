@@ -40,13 +40,14 @@ public class ActivityPage extends BasePage {
         $(ACTIVITY_DISTANTION).sendKeys(dist);
         $(ACTIVITY_UNIT).sendKeys(unit);
         $(ADD_VALUE_TO_ACTIVITY_LOG).click();
-    }
 
+    }
 
     @Step
     public void addToActivityLog() {
         log.info("Add to activity log");
         $(ADD_TO_ACTIVITY_LOG).click();
+
     }
 
     @Step
@@ -54,6 +55,7 @@ public class ActivityPage extends BasePage {
         log.info("Add actions button");
         $(ACTIONS_BUTTON).click();
         $(DELETE_BUTTON).click();
+
     }
 
     @Step
@@ -61,6 +63,7 @@ public class ActivityPage extends BasePage {
         log.info("Validation result Activity Walking");
         $(RESULT_OF_ACTIVITY_LOG).getText();
         assertEquals(searchResult, "backpacking");
+
     }
 
     @Step
@@ -68,5 +71,6 @@ public class ActivityPage extends BasePage {
         log.info("Validation result Activity Bicycling");
         $(RESULT_OF_ACTIVITY_LOG).getText();
         assertEquals(searchResult, "BMX or mountain biking");
+
     }
 }

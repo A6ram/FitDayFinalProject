@@ -22,11 +22,11 @@ public class DashBoardPage extends BasePage {
         return this;
     }
 
-
     @Step("Add food button")
     public void addFoodButton() {
         log.info("Add food button");
         $(ADD_FOOD_BUTTON).click();
+
     }
 
     @Step("Add activity button")
@@ -34,8 +34,6 @@ public class DashBoardPage extends BasePage {
         log.info("Add activity button");
         $(ADD_ACTIVITY_BUTTON).click();
 
-
     }
-
 
 }

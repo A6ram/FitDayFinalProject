@@ -33,36 +33,44 @@ public class FoodPage extends BasePage {
     public static final SelenideElement TYPE_OF_FISH = $(By.xpath("(//*[contains(@class,'name')])[8]"));
     public static final SelenideElement KIND_OF_FINFISH = $(By.xpath("(//td[contains(@class,'name')])[2]"));
 
-
     @Override
     public FoodPage isPageOpened() {
         $(PROFILE_LINK).shouldBe(Condition.visible);
         return this;
 
     }
+
     @Step
-    public void chooseKindOf(String kindOf){
+    public void chooseKindOf(String kindOf) {
         $(KIND_OF_FINFISH).click();
+
     }
 
     @Step
-    public void addFoodByBrowse(){
+    public void addFoodByBrowse() {
         $(BROWSE_BUTTON).click();
+
     }
+
     @Step
-    public void chooseTypeOfFood(String type){
+    public void chooseTypeOfFood(String type) {
         $(TYPE_OF_FOOD).click();
+
     }
+
     @Step
-    public void chooseTypeOf(String type){
+    public void chooseTypeOf(String type) {
         $(TYPE_OF_FISH).click();
+
     }
+
     @Step
-    public void choosePortion(String amount,String value){
+    public void choosePortion(String amount, String value) {
         $(FOOD_AMOUNT).sendKeys(Keys.CONTROL + "a");
         $(FOOD_AMOUNT).sendKeys(Keys.BACK_SPACE);
         $(FOOD_AMOUNT).sendKeys(amount);
         $(ENTER_DROPDOWN_FOOD_VALUE).sendKeys(value);
+
     }
 
     @Step
@@ -73,18 +81,21 @@ public class FoodPage extends BasePage {
         $(FOOD_AMOUNT).sendKeys(Keys.BACK_SPACE);
         $(FOOD_AMOUNT).sendKeys(amount);
         $(ENTER_DROPDOWN_FOOD_VALUE).sendKeys(value);
+
     }
 
     @Step
     public void addToFoodLog() {
         log.info("Add value to food log");
         $(ADD_VALUE_TO_FOOD_LOG).click();
+
     }
 
     @Step("Add delete button")
     public void deleteFromFoodLog() {
         $(ACTIONS_BUTTON).click();
         $(DELETE_BUTTON).click();
+
     }
 
     @Step("Create custom food item")
@@ -107,6 +118,7 @@ public class FoodPage extends BasePage {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "10167");
+
     }
 
     @Step
@@ -114,6 +126,7 @@ public class FoodPage extends BasePage {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "—");
+
     }
 
     @Step
@@ -121,6 +134,7 @@ public class FoodPage extends BasePage {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "100");
+
     }
 
     @Step
@@ -128,18 +142,23 @@ public class FoodPage extends BasePage {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "—");
+
     }
+
     @Step
     public void validateResultAfterAddingByBrowse(String searchResult) {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
-        assertEquals(searchResult,"844");
+        assertEquals(searchResult, "844");
+
     }
+
     @Step
     public void validateResultAfterDeleteByBrowse(String searchResult) {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "—");
+
     }
 
 }

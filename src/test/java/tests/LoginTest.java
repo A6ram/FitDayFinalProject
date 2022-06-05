@@ -11,6 +11,7 @@ public class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, password);
         loginPage.isPageOpened();
+
     }
 
     @Test(description = "Login without password")
@@ -18,6 +19,7 @@ public class LoginTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, "");
         loginPage.getErrorMessage("Password is required.");
+
     }
 
 }

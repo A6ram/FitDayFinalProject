@@ -22,12 +22,14 @@ public class LoginPage extends BasePage {
     public LoginPage isPageOpened() {
         $(PROFILE_LINK).shouldBe(Condition.visible);
         return this;
+
     }
 
     @Step("Opening login page")
     public LoginPage openPage() {
         open("https://www.fitday.com/fitness/Login.html");
         return this;
+
     }
 
     @Step("Login by '{user}' using password '{password}'")
@@ -35,12 +37,13 @@ public class LoginPage extends BasePage {
         $(USERNAME_INPUT).sendKeys(user);
         $(PASSWORD_INPUT).sendKeys(password);
         $(LOGIN_BUTTON).submit();
-    }
 
+    }
 
     @Step("Get error message")
     public void getErrorMessage(String text) {
         $(ERROR_MESSAGE).find(text);
 
     }
+
 }
