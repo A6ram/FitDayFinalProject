@@ -22,14 +22,14 @@ public class FoodLogTest extends BaseTest {
 
     @Test(description = "Trying to add to the food log and then delete")
     public void addedAndDeletedFromTheFoodLog() {
-        loginPage.openPage();
-        loginPage.login(user, password);
-        dashBoardPage.addFoodButton();
-        foodPage.addFoodBySearch("cheese", "3", "kg");
-        foodPage.addToFoodLog();
-        foodPage.validateResultAfterAdding("10167");
-        foodPage.deleteFromFoodLog();
-        foodPage.validateResultAfterDelete("—");
+        loginPage.openPage();                                            //Открываем окно логина
+        loginPage.login(user, password);                                 //Вводим данные для входа
+        dashBoardPage.addFoodButton();                                   // Переходим на страницу журнала еды
+        foodPage.addFoodBySearch("cheese", "3", "kg"); // Поиск и введение данных о порции еды
+        foodPage.addToFoodLog();                                         // Добовляем в журнал еды
+        foodPage.validateResultAfterAdding("10167");           // Проверяем наличие еды в журнале по количеству каллорий
+        foodPage.deleteFromFoodLog();                                    // Удаляем изжурнала еды
+        foodPage.validateResultAfterDelete("—");               // Проверяем отсутвие в журнале еды
 
     }
 
