@@ -28,6 +28,10 @@ public class FoodPage extends BasePage {
     public static final SelenideElement CUSTOM_FOOD_UNIT = $("select[name='unit']");
     public static final SelenideElement CUSTOM_FOOD_CALORIES = $("input[name='Calories']");
     public static final SelenideElement ADD_TO_FOOD_LOG_BUTTON_IN_CUSTOM = $("div[id='food-add-dialog'] span:nth-child(1)");
+    public static final SelenideElement BROWSE_BUTTON = $(".browse-link");
+    public static final SelenideElement TYPE_OF_FOOD = $(By.xpath("(//td[contains(@class,'name')])[8]"));
+    public static final SelenideElement TYPE_OF_FISH = $(By.xpath("(//*[contains(@class,'name')])[8]"));
+    public static final SelenideElement KIND_OF_FINFISH = $(By.xpath("(//td[contains(@class,'name')])[2]"));
 
 
     @Override
@@ -35,6 +39,30 @@ public class FoodPage extends BasePage {
         $(PROFILE_LINK).shouldBe(Condition.visible);
         return this;
 
+    }
+    @Step
+    public void chooseKindOf(String kindOf){
+        $(KIND_OF_FINFISH).click();
+    }
+
+    @Step
+    public void addFoodByBrowse(){
+        $(BROWSE_BUTTON).click();
+    }
+    @Step
+    public void chooseTypeOfFood(String type){
+        $(TYPE_OF_FOOD).click();
+    }
+    @Step
+    public void chooseTypeOf(String type){
+        $(TYPE_OF_FISH).click();
+    }
+    @Step
+    public void choosePortion(String amount,String value){
+        $(FOOD_AMOUNT).sendKeys(Keys.CONTROL + "a");
+        $(FOOD_AMOUNT).sendKeys(Keys.BACK_SPACE);
+        $(FOOD_AMOUNT).sendKeys(amount);
+        $(ENTER_DROPDOWN_FOOD_VALUE).sendKeys(value);
     }
 
     @Step
@@ -58,7 +86,6 @@ public class FoodPage extends BasePage {
         $(ACTIONS_BUTTON).click();
         $(DELETE_BUTTON).click();
     }
-
 
     @Step("Create custom food item")
     public void createCustomFoodItem(String FoodName, String value, String unit, String calories) {
@@ -98,6 +125,18 @@ public class FoodPage extends BasePage {
 
     @Step
     public void validateResultAfterDeleteCustom(String searchResult) {
+        log.info("Validation result Food Log");
+        $(RESULT_OF_FOOD_LOG).getText();
+        assertEquals(searchResult, "—");
+    }
+    @Step
+    public void validateResultAfterAddingByBrowse(String searchResult) {
+        log.info("Validation result Food Log");
+        $(RESULT_OF_FOOD_LOG).getText();
+        assertEquals(searchResult,"844");
+    }
+    @Step
+    public void validateResultAfterDeleteByBrowse(String searchResult) {
         log.info("Validation result Food Log");
         $(RESULT_OF_FOOD_LOG).getText();
         assertEquals(searchResult, "—");

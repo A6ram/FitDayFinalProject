@@ -32,5 +32,22 @@ public class FoodLogTest extends BaseTest {
         foodPage.validateResultAfterDelete("—");
 
     }
+    @Test
+    public void addFoodByBrowse(){
+        loginPage.openPage();
+        loginPage.login(user,password);
+        dashBoardPage.addFoodButton();
+        foodPage.addFoodByBrowse();
+        foodPage.chooseTypeOfFood("Fish");
+        foodPage.chooseTypeOf("FinFish");
+        foodPage.chooseKindOf("Barracuda");
+        foodPage.choosePortion("400","grams");
+        foodPage.addToFoodLog();
+        foodPage.validateResultAfterAddingByBrowse("844");
+        foodPage.deleteFromFoodLog();
+        foodPage.validateResultAfterDeleteByBrowse("—");
+
+
+    }
 
 }
