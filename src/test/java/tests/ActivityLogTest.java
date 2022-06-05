@@ -4,47 +4,31 @@ import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 
 @Log4j2
-public class ActivityLogTest extends BaseTest{
+public class ActivityLogTest extends BaseTest {
 
-
-    @Test(description = "Try to add some foodname to food table")
-    public void foodButtonTest() {
+    @Test
+    public void createdWalkingActivity() {
         loginPage.openPage();
         loginPage.login(user, password);
         dashBoardPage.addActivityButton();
-        activityPage.checkResultInActivityLog();
-    }
-    @Test
-    public void browseActivity(){
-        loginPage.openPage();
-        loginPage.login(user,password);
-        dashBoardPage.addActivityButton();
-        activityPage.chooseTheVariantFromDropdownActivity();
-        activityPage.checkResultInActivityLog();
-    }
-    @Test
-    public void createActivity(){
-        loginPage.openPage();
-        loginPage.login(user,password);
-        dashBoardPage.addActivityButton();
-        activityPage.chooseTheVariantFromDropdownActivity();
-        activityPage.checkResultOfActivity();
-
-    }
-    @Test
-    public void addingAndRemovingFromTheActivityLogTest(){
-        loginPage.openPage();
-        loginPage.login(user, password);
-        dashBoardPage.addActivityButton();
-        activityPage.addActivityBySearch("boxing");
-        activityPage.checkResultOfActivity();
-        activityPage.inputSpaceTimeOfActivity("1");
-        activityPage.addValueToFoodLog();
+        activityPage.createDataInActivityLog("Walking", "1", "1000", "yards");
         activityPage.addToActivityLog();
-        activityPage.searchActivityBottom();
-        activityPage.addActionsButton();
-        activityPage.addDeleteButton();
-        activityPage.resultOfActivity();
+        activityPage.validateResultWalking("backpacking");
+        activityPage.deleteFromActivityLog();
+
+
+    }
+
+    @Test
+    public void createdBicyclingActivity() {
+        loginPage.openPage();
+        loginPage.login(user, password);
+        dashBoardPage.addActivityButton();
+        activityPage.createDataInActivityLog("Bicycling", "2", "50", "kms");
+        activityPage.addToActivityLog();
+        activityPage.validateResultBicycling("BMX or mountain biking");
+        activityPage.deleteFromActivityLog();
+
 
     }
 

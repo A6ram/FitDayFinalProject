@@ -7,89 +7,66 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Condition.value;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static org.testng.AssertJUnit.assertEquals;
 
 
 @Log4j2
 public class ActivityPage extends BasePage {
     public static final By PROFILE_LINK = By.id("profile-link");
-    public static final SelenideElement VISIBILITY_NAME_OF_ACTIVITY_LOG = $("#main");
-    public static final SelenideElement DROPDOWN_VARIANT_ACTIVITY =$("#activity-browse");
-    public static final SelenideElement AVTIVITY_SEARCH_ALL = $("#activity-search-all");
+    public static final SelenideElement DROPDOWN_VARIANT_ACTIVITY = $("#activity-browse");
     public static final SelenideElement INPUT_SPACE_OF_ACTIVITY_TIME = $(By.xpath("(//input[@name='hours'])[1]"));
     public static final SelenideElement ADD_VALUE_TO_ACTIVITY_LOG = $("a[class='add icon']");
-    public static final SelenideElement ENTER_TYPE_OF_ACTIVITY = $("input[value='What did you do today?']");
     public static final SelenideElement ADD_TO_ACTIVITY_LOG = $(".activity-add-button.add.button");
-    public static final SelenideElement ACTIVITY_BOTTOM = $("#activity-bottom");
     public static final SelenideElement ACTIONS_BUTTON = $(".edit.icon");
     public static final SelenideElement DELETE_BUTTON = $(".button-icon.delete");
-    public static final SelenideElement RESULT_OF_ACTIVITY_LOG = $("tfoot td:nth-child(1)");
+    public static final SelenideElement RESULT_OF_ACTIVITY_LOG = $(By.xpath("//td[@class='name']"));
+    public static final SelenideElement ACTIVITY_UNIT = $(By.xpath("(//select[@name='unit'])[1]"));
+    public static final SelenideElement ACTIVITY_DISTANTION = $(By.xpath("(//input[@name='distance'])[1]"));
 
     @Override
     public ActivityPage isPageOpened() {
         $(PROFILE_LINK).shouldBe(Condition.visible);
         return this;
     }
-    @Step("Results activity button test")
-    public void checkResultInActivityLog() {
-        log.info("Results activity button test");
-        $(VISIBILITY_NAME_OF_ACTIVITY_LOG).shouldBe(visible);
-    }
 
-    @Step("Choose the dropdown activity variant")
-    public void chooseTheVariantFromDropdownActivity() {
-        log.info("Choose the dropdown activity variant");
-        $(DROPDOWN_VARIANT_ACTIVITY).sendKeys(Keys.ARROW_DOWN);
-        $(DROPDOWN_VARIANT_ACTIVITY).pressEnter();
-    }
-    @Step("Search result of activity log")
-    public void checkResultOfActivity(){
-        log.info("Search result of activity log");
-        $(AVTIVITY_SEARCH_ALL).shouldBe(visible);
-
-    }
-    @Step("Input time of activity space")
-    public void inputSpaceTimeOfActivity(String type) {
-        log.info("Input time of activity space");
+    @Step
+    public void createDataInActivityLog(String activity, String time, String dist, String unit) {
+        log.info("Create data in activity log");
+        $(DROPDOWN_VARIANT_ACTIVITY).sendKeys(activity);
         $(INPUT_SPACE_OF_ACTIVITY_TIME).sendKeys(Keys.CONTROL + "a");
-        $(INPUT_SPACE_OF_ACTIVITY_TIME).sendKeys(type);
-    }
-    @Step("Add value to food log")
-    public void addValueToFoodLog() {
-        log.info("Add value to food log");
+        $(INPUT_SPACE_OF_ACTIVITY_TIME).sendKeys(Keys.BACK_SPACE);
+        $(INPUT_SPACE_OF_ACTIVITY_TIME).sendKeys(time);
+        $(ACTIVITY_DISTANTION).sendKeys(dist);
+        $(ACTIVITY_UNIT).sendKeys(unit);
         $(ADD_VALUE_TO_ACTIVITY_LOG).click();
     }
-    @Step("Enter type of food")
-    public void addActivityBySearch(String type) {
-        log.info("Enter type of food");
-        $(ENTER_TYPE_OF_ACTIVITY).sendKeys(type);
-    }
-    @Step("Add to activity log")
-    public void addToActivityLog(){
+
+
+    @Step
+    public void addToActivityLog() {
         log.info("Add to activity log");
         $(ADD_TO_ACTIVITY_LOG).click();
     }
+
     @Step
-    public void searchActivityBottom(){
-        log.info("");
-        $(ACTIVITY_BOTTOM).shouldBe(visible);
-    }
-    @Step("Add actions button")
-    public void addActionsButton() {
+    public void deleteFromActivityLog() {
+        log.info("Add actions button");
         $(ACTIONS_BUTTON).click();
-    }
-    @Step("Add delete button")
-    public void addDeleteButton() {
         $(DELETE_BUTTON).click();
     }
-    @Step("Search result of activity log")
-    public void resultOfActivity() {
-        log.info("Search result of activity log");
-        $(RESULT_OF_ACTIVITY_LOG).shouldNotBe(value("0"));
+
+    @Step
+    public void validateResultWalking(String searchResult) {
+        log.info("Validation result Activity Walking");
+        $(RESULT_OF_ACTIVITY_LOG).getText();
+        assertEquals(searchResult, "backpacking");
     }
 
-
-
+    @Step
+    public void validateResultBicycling(String searchResult) {
+        log.info("Validation result Activity Bicycling");
+        $(RESULT_OF_ACTIVITY_LOG).getText();
+        assertEquals(searchResult, "BMX or mountain biking");
+    }
 }

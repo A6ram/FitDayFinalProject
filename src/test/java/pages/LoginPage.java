@@ -15,12 +15,12 @@ public class LoginPage extends BasePage {
     public static final By USERNAME_INPUT = By.id("username");
     public static final SelenideElement PASSWORD_INPUT = $(By.xpath("//input[@type='password']"));
     public static final SelenideElement LOGIN_BUTTON = $(By.xpath("//input[@value='Login']"));
-    public static final By FORM_LOGIN = By.id("form-login");
+    public static final By PROFILE_LINK = By.id("profile-link");
     public static final SelenideElement ERROR_MESSAGE = $("p[for='Password']");
 
     @Override
     public LoginPage isPageOpened() {
-        $(FORM_LOGIN).shouldBe(Condition.visible);
+        $(PROFILE_LINK).shouldBe(Condition.visible);
         return this;
     }
 
@@ -37,17 +37,10 @@ public class LoginPage extends BasePage {
         $(LOGIN_BUTTON).submit();
     }
 
-    @Step("Login by '{user}' without '{password}'")
-    public void loginWithoutPassword(String user) {
-        $(USERNAME_INPUT).sendKeys(user);
-        $(LOGIN_BUTTON).submit();
-
-
-    }
 
     @Step("Get error message")
-    public void getErrorMessage() {
-        $(ERROR_MESSAGE).shouldBe(Condition.visible);
+    public void getErrorMessage(String text) {
+        $(ERROR_MESSAGE).find(text);
 
     }
 }

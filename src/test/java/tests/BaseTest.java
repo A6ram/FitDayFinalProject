@@ -48,7 +48,7 @@ public abstract class BaseTest {
         loginPage = new LoginPage();
         dashBoardPage = new DashBoardPage();
         foodPage = new FoodPage();
-        activityPage= new ActivityPage();
+        activityPage = new ActivityPage();
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing browser")
