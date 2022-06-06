@@ -3,8 +3,8 @@ package utils;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
-public class RetryAnalyzer implements IRetryAnalyzer {
-    private static final int MAX_RETRY = 3;
+public class Retry implements IRetryAnalyzer {
+    private static final int MAX_RETRY = 5;
     private int attempt = 1;
 
     @Override

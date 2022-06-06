@@ -10,6 +10,16 @@ public class LoginTest extends BaseTest {
     public void positiveLogin() {
         loginPage.openPage();
         loginPage.login(user, password);
+        loginPage.isPageOpened();
+
+    }
+
+    @Test(description = "Login without password")
+    public void loginWithoutPassword() {
+        loginPage.openPage();
+        loginPage.login(user, "");
+        loginPage.getErrorMessage("Password is required.");
+
     }
 
 }
