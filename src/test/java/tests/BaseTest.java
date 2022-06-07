@@ -33,7 +33,7 @@ public class BaseTest {
 
 
         Configuration.browser = browser;
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.clickViaJs = true;
         Configuration.timeout = 10000;
 
