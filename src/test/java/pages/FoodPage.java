@@ -22,7 +22,7 @@ public class FoodPage extends BasePage {
     public static final SelenideElement DELETE_BUTTON = $(".button-icon.delete");
     public static final SelenideElement RESULT_OF_FOOD_LOG = $(By.xpath("//td[@class='name']"));
     public static final SelenideElement CREATE_CUSTOM_FOOD = $("div[id='food-new-custom'] a");
-    public static final SelenideElement ADD_SAVE_BUTTON = $(".save.button");
+    public static final SelenideElement ADD_SAVE_BUTTON = $(By.xpath("(//a[@class='save button'])[1]"));
     public static final SelenideElement CUSTOM_FOOD_NAME = $("input[name='name']");
     public static final SelenideElement CUSTOM_FOOD_VALUE = $("input[value='1']");
     public static final SelenideElement CUSTOM_FOOD_UNIT = $("select[name='unit']");

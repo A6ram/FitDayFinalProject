@@ -13,7 +13,7 @@ public class FoodLogTest extends BaseTest {
         loginPage.openPage();
         loginPage.login(user, password);
         dashBoardPage.addFoodButton();
-        foodPage.createCustomFoodItem("Cukar", "200", "grams", "100");
+        foodPage.createCustomFoodItem("klykva", "100", "grams", "200");
         foodPage.validateResultAfterAddingCustom("100");
         foodPage.deleteFromFoodLog();
         foodPage.validateResultAfterDeleteCustom("—");
